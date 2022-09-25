@@ -8,7 +8,7 @@ function Header() {
       <h1>Home</h1>
       <div className="inputBox">
         <SearchRounded className="searchIcon"></SearchRounded>
-        <input classname="inputBorder"type="text" placeholder="Search" />
+        <input className="inputBorder"type="text" placeholder="Search" />
       </div>
 
       <div className="shoppingCart">

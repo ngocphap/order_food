@@ -23,6 +23,8 @@ import SubMenuContainer from "./Components/SubMenuContainer";
 import BannerName from "./Components/BannerName";
 import MenuContainer from "./Components/MenuContainer";
 import MenuCard from "./Components/MenuCard";
+import { MenuItems, Items } from "./Components/Data";
+import ItemCard from "./Components/ItemCard";
 function App() {
   {
     /* useEffect  tạo vòng lập sử dụng bất cứ khi nào đề xuất */
@@ -33,8 +35,17 @@ function App() {
       menuLi.forEach((n) => n.classList.remove("active"));
       this.classList.add("active");
     }
-
     menuLi.forEach((n) => n.addEventListener("click", setMenuActive));
+
+    // menuCard active toggle
+    const menuCards = document
+      .querySelector(".rowContainer")
+      .querySelectorAll(".rowMenuCard");
+    function setMenuCardActive() {
+      menuCards.forEach((n) => n.classList.remove("active"));
+      this.classList.add("active");
+    }
+    menuCards.forEach((n) => n.addEventListener("click", setMenuCardActive));
   }, []);
 
   return (
@@ -59,24 +70,63 @@ function App() {
               <SubMenuContainer name={"Món Phổ biến"} />
             </div>
             <div className="rowContainer">
-              <div>
-                <MenuCard 
-                imgSrc={"http://hoanggiabakery.vn/wp-content/uploads/2019/06/Hamberger-b%C3%B2-khoai-t%C3%A2y-chi%C3%AAn-247x300.jpg"}
-                name={"Hamberger"}/>
-              </div>
-              <div>
-                <MenuCard 
-                imgSrc={"http://hoanggiabakery.vn/wp-content/uploads/2019/06/Hamberger-b%C3%B2-khoai-t%C3%A2y-chi%C3%AAn-247x300.jpg"}
-                name={"Hamberger"}/>
-              </div>
-              <div>
-                <MenuCard 
-                imgSrc={"http://hoanggiabakery.vn/wp-content/uploads/2019/06/Hamberger-b%C3%B2-khoai-t%C3%A2y-chi%C3%AAn-247x300.jpg"}
-                name={"Hamberger"}/>
-              </div>
+              {MenuItems &&
+                MenuItems.map((data) => (
+                  <div key={data.id}>
+                    <MenuCard
+                      imgSrc={data.imgSrc}
+                      name={data.name}
+                      isActive={data.id === 1 ? true : false}
+                    />
+                  </div>
+                ))}
             </div>
 
-            <div className="dishitemContainer"></div>
+            <div className="dishitemContainer">
+              <ItemCard
+                imgSrc={
+                  "https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fburger3.png?alt=media&token=0ebe8311-6378-411b-9b6e-d7a6d2a106a2"
+                }
+                name={"Hamberger Bò"}
+                ratings={"5"}
+                price={"10.000"}
+              />
+              <ItemCard
+                imgSrc={
+                  "https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fburger3.png?alt=media&token=0ebe8311-6378-411b-9b6e-d7a6d2a106a2"
+                }
+                name={"Hamberger Bò"}
+                ratings={"5"}
+                price={"10.000"}
+              />
+
+              <ItemCard
+                imgSrc={
+                  "https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fburger3.png?alt=media&token=0ebe8311-6378-411b-9b6e-d7a6d2a106a2"
+                }
+                name={"Hamberger Bò"}
+                ratings={"5"}
+                price={"10.000"}
+              />
+
+              <ItemCard
+                imgSrc={
+                  "https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fburger3.png?alt=media&token=0ebe8311-6378-411b-9b6e-d7a6d2a106a2"
+                }
+                name={"Hamberger Bò"}
+                ratings={"5"}
+                price={"10.000"}
+              />
+
+              <ItemCard
+                imgSrc={
+                  "https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fburger3.png?alt=media&token=0ebe8311-6378-411b-9b6e-d7a6d2a106a2"
+                }
+                name={"Hamberger Bò"}
+                ratings={"5"}
+                price={"10.000"}
+              />
+            </div>
           </div>
         </div>
         <div className="rightMenu"></div>
